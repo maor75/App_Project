@@ -54,7 +54,7 @@ def execute_query(query, params=None, fetch=False):
 
 @app.get("/costumers")
 def get_customers():
-    query = "SELECT * FROM app1.costumers;"
+    query = "SELECT * FROM mydb.providers;"
     customers = execute_query(query, fetch=True)
     if customers:
         return {"table": customers}
@@ -63,19 +63,19 @@ def get_customers():
 @app.get("/product")
 def get_customers():
     # Fetch customers data
-    query = "SELECT * FROM app1.product;"
+    query = "SELECT * FROM mydb.product;"
     customers = execute_query(query, fetch=True)
     return {"table": customers}
 class Customer(BaseModel):
-    costumer_id: int
-    costumer_name: str
-    last_name: str
+    name: str
+    mail: str
+    phone: str
 
 @app.post("/input")
 def create_customer(customer: Customer):
     try:
-        query = "INSERT INTO app1.costumers (costumer_id, costumer_name, last_name) VALUES (%s, %s, %s)"
-        params = (customer.costumer_id, customer.costumer_name, customer.last_name)
+        query = "INSERT INTO `mydb`.`providers` (`name`, `email`, `phone`) VALUES (%s, %s, %s);"
+        params = (customer.name, customer.mail, customer.phone)
         execute_query(query, params)
         return {"message": "Customer created successfully."}
     except Exception as e:

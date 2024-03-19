@@ -22,9 +22,9 @@ function InputForm() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        costumer_id: formData.id,
-        costumer_name: formData.fname,
-        last_name: formData.lname
+        name: formData.name,
+        mail: formData.mail,
+        phone: formData.phone
       })
     });
 
@@ -34,9 +34,9 @@ function InputForm() {
 
     // Clear form fields after successful submission
     setFormData({
-      id: '',
-      fname: '',
-      lname: ''
+      name: '',
+      mail: '',
+      phone: ''
     });
 
     console.log('Customer added successfully');
@@ -49,27 +49,27 @@ function InputForm() {
     <div>
       <h2>Add Customer</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="id">ID:</label>
+        <label htmlFor="name">name:</label>
         <input
           type="text"
-          name="id"
-          value={formData.id}
+          name="name"
+          value={formData.name}
           onChange={handleInputChange}
         />
 
-        <label htmlFor="fname">First Name:</label>
+        <label htmlFor="mail">mail:</label>
         <input
           type="text"
-          name="fname"
-          value={formData.fname}
+          name="mail"
+          value={formData.mail}
           onChange={handleInputChange}
         />
 
-        <label htmlFor="lname">Last Name:</label>
+        <label htmlFor="phone">phone:</label>
         <input
           type="text"
-          name="lname"
-          value={formData.lname}
+          name="phone"
+          value={formData.phone}
           onChange={handleInputChange}
         />
 
