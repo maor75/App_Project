@@ -11,78 +11,83 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 
-CREATE SCHEMA IF NOT EXISTS mydb DEFAULT CHARACTER SET utf8 ;
-USE mydb ;
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table mydb.providers
+-- Table `mydb`.`providers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mydb.providers (
-  id INT NOT NULL,
-  name VARCHAR(45) NULL,
-  email VARCHAR(45) NULL,
-  phone VARCHAR(45) NULL,
-  PRIMARY KEY (id)
+CREATE TABLE IF NOT EXISTS `mydb`.`providers` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `phone` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table mydb.product
+-- Table `mydb`.`product`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mydb.product (
-  id INT NOT NULL,
-  name VARCHAR(45) NULL,
-  provider INT NULL,
-  PRIMARY KEY (id),
-  INDEX provider_idx (provider ASC) VISIBLE,
-  CONSTRAINT provider
-    FOREIGN KEY (provider)
-    REFERENCES mydb.providers (id)
+CREATE TABLE IF NOT EXISTS `mydb`.`product` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `provider` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `provider_idx` (`provider` ASC) VISIBLE,
+  CONSTRAINT `provider`
+    FOREIGN KEY (`provider`)
+    REFERENCES `mydb`.`providers` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table mydb.orders
+-- Table `mydb`.`orders`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mydb.orders (
-  id INT NOT NULL,
-  provider INT NULL,
-  order_time DATE NULL,
-  coming_time VARCHAR(45) NULL,
-  PRIMARY KEY (id),
-  INDEX orderprovider_idx (provider ASC) VISIBLE,
-  CONSTRAINT orderprovider
-    FOREIGN KEY (provider)
-    REFERENCES mydb.providers (id)
+CREATE TABLE IF NOT EXISTS `mydb`.`orders` (
+  `id` INT NOT NULL,
+  `provider` INT NULL,
+  `order time` DATE NULL,
+  `coming time` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `orderprovider_idx` (`provider` ASC) VISIBLE,
+  CONSTRAINT `orderprovider`
+    FOREIGN KEY (`provider`)
+    REFERENCES `mydb`.`providers` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table mydb.inorder
+-- Table `mydb`.`inorder`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mydb.inorder (
-  order_id INT NULL,
-  product INT NULL,
-  amount VARCHAR(45) NULL,
-  INDEX inproduct_idx (product ASC) VISIBLE,
-  INDEX order_idx (order_id ASC) VISIBLE,
-  CONSTRAINT inproduct
-    FOREIGN KEY (product)
-    REFERENCES mydb.product (id)
+CREATE TABLE IF NOT EXISTS `mydb`.`inorder` (
+  `order` INT NULL,
+  `product` INT NULL,
+  `amount` VARCHAR(45) NULL,
+  INDEX `inproduct_idx` (`product` ASC) VISIBLE,
+  INDEX `order_idx` (`order` ASC) VISIBLE,
+  CONSTRAINT `inproduct`
+    FOREIGN KEY (`product`)
+    REFERENCES `mydb`.`product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT order_constraint
-    FOREIGN KEY (order_id)
-    REFERENCES mydb.orders (id)
+  CONSTRAINT `order`
+    FOREIGN KEY (`order`)
+    REFERENCES `mydb`.`orders` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+TER TABLE mydb.providers 
+CHANGE COLUMN id id INT NOT NULL AUTO_INCREMENT ;
