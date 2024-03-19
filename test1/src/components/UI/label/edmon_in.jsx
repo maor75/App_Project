@@ -54,7 +54,7 @@ function InputForm() {
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name:</label>
         </span>
 
         <span>
@@ -62,7 +62,7 @@ function InputForm() {
             value={formData.mail} 
             onChange={(e) => setFormData({ ...formData, mail: e.target.value })}
           />
-          <label htmlFor="mail">Mail</label>
+          <label htmlFor="mail">Mail:</label>
         </span>
 
         <span>
@@ -70,7 +70,7 @@ function InputForm() {
           value={formData.phone} 
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             />
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">Phone:</label>
         </span>
 
         <button className={`${styles.btn} ${styles.third}`} type="submit">Add provider</button>

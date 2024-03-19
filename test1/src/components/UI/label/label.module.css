@@ -66,22 +66,22 @@
 }
 .inputContainer {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     width: 100%;
   }
 .inputContainer label {
   position: absolute;
   display: inline-block;
-  top: 0;
-  left: 10px;
+  top: 27.5px;
+  left: 0px;
   padding: 5px;
   transition: all .3s ease-in-out;
 }
 
 .inputContainer input {
-  padding: 10px 15px;
+  padding: 10px 0 10px 15px;
   margin-top: 25px; /* Adjust this value as needed */
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 
@@ -90,9 +90,9 @@ label {
     display: inline-block;
     position: absolute;
     top: -2px;
-    left: 0;
+    left: 0px;
     bottom: -4px;
-    padding: 10px 15px; /* Increased padding to match button */
+    padding: 10px 10px; /* Increased padding to match button */
     color: #032429;
     font-size: 13px; /* Increased font size to match button */
     font-weight: 700;
@@ -154,7 +154,7 @@ label::after {
 .btn:hover,
 .btn:focus {
     color: #fff;
-    background-color: #3498db;
+    background-color: #fff11;
     outline: 0;
 }
 

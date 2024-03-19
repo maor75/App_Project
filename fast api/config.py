@@ -1,6 +1,6 @@
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": "edmon",
+    "password": "change-me",
     "database": "mydb"
 }

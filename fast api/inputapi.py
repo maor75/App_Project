@@ -81,6 +81,16 @@ def create_customer(customer: Customer):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error creating customer")
 
+@app.post("/input_product")
+def create_customer(product: Customer):
+    try:
+        query = "INSERT INTO `mydb`.`providers` (`id`, `name`, `provider`) VALUES (%s, %s, %s);"
+        params = (product.id, product.name, product.provider)
+        execute_query(query, params)
+        return {"message": "Customer created successfully."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error creating customer")
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
