@@ -1,11 +1,12 @@
 import React from "react";
-import InputForm from "../components/UI/table/edmon_in";
-
+import InputForm from "../components/UI/label/edmon_in";
+import DynamicInputComponent from "../components/UI/pluse/pluse";
 const Edmon = () => {
     return(
         <div>
+            <h1>have a new provider?</h1>
             <InputForm></InputForm>
-            <h1>this is page</h1>
+            <DynamicInputComponent></DynamicInputComponent>
         </div>
     );
 };
