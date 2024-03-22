@@ -1,11 +1,11 @@
 import cl from './table.module.css'
 import React, { useState, useEffect } from 'react';
 
-function CustomerTable() {
+function CustomerTable1({FetchUrl}) {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/costumers')
+    fetch(FetchUrl)
       .then(response => response.json())
       .then(data => setCustomers(data.table))
       .catch(error => console.error('Error fetching customers:', error));
@@ -36,4 +36,4 @@ function CustomerTable() {
   );
 }
 
-export default CustomerTable;
+export default CustomerTable1;

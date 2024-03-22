@@ -96,6 +96,10 @@ def create_product(products: list[Product]):
         return {"message": "Products created successfully."}
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error creating products")
+    
+
+
+
 
 if __name__ == "__main__":
     import uvicorn
