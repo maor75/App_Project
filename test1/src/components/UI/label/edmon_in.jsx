@@ -73,7 +73,7 @@ function InputForm() {
           <label htmlFor="phone">Phone:</label>
         </span>
 
-        <button className={`${styles.btn} ${styles.third}`} type="submit">Add provider</button>
+        <button className={`${styles.btn} ${styles.third}`} type="submit">Add product</button>
       </form>
       
     </div>

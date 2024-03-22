@@ -81,15 +81,21 @@ def create_customer(customer: Customer):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error creating customer")
 
+class Product(BaseModel):
+    id: str
+    name: str
+    provider: str
+
 @app.post("/input_product")
-def create_customer(product: Customer):
+def create_product(products: list[Product]):
     try:
-        query = "INSERT INTO `mydb`.`providers` (`id`, `name`, `provider`) VALUES (%s, %s, %s);"
-        params = (product.id, product.name, product.provider)
-        execute_query(query, params)
-        return {"message": "Customer created successfully."}
+        for product in products:
+            query = "INSERT INTO `mydb`.`product` (`id`, `name`, `provider`) VALUES (%s, %s, %s);"
+            params = (product.id, product.name, product.provider)
+            execute_query(query, params)
+        return {"message": "Products created successfully."}
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Error creating customer")
+        raise HTTPException(status_code=500, detail="Error creating products")
 
 if __name__ == "__main__":
     import uvicorn
