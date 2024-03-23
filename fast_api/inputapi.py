@@ -6,7 +6,6 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# CORS middleware to allow cross-origin requests
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -98,9 +97,6 @@ def create_product(products: list[Product]):
         raise HTTPException(status_code=500, detail="Error creating products")
     
 
-
-
-
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="172.16.0.4", port=8000)

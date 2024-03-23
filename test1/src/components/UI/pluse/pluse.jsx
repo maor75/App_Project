@@ -89,7 +89,7 @@ function DynamicInputComponent() {
             </span>
           </div>
         ))}
-        <button className={`${styles.btn} ${styles.third}`} type="submit">Add products</button>
+        <button className={`${styles.btn} ${styles.third}`} type="submit">submit</button>
       </form>
     </div>
   );

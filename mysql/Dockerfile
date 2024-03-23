@@ -1,0 +1,4 @@
+FROM mysql:latest
+ENV MYSQL_ROOT_PASSWORD=edmon
+ENV MYSQL_DATABASE=mydb
+WORKDIR /app
