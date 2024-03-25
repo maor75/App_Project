@@ -24,7 +24,7 @@ function DynamicInputComponent() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/input_product', {
+      const response = await fetch('http://localhost:8000/input_product', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

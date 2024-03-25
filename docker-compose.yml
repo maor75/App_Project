@@ -10,7 +10,9 @@ networks:
 
 services:
   database:
-    image: mysql:latest
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: edmon
       MYSQL_DATABASE: mydb
