@@ -5,53 +5,46 @@
 # azure-pipeline.yml
 
 trigger:
-  - master  # Define which branch triggers the pipeline
+  - master
 
 pool:
-  vmImage: 'ubuntu-latest'  # Specify the VM image for the pipeline agent
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: Docker@2
   inputs:
-    containerRegistry: 'your-container-registry-service-connection'  # Specify your Azure Container Registry service connection
-    repository: 'your-acr-name.azurecr.io/mysql'  # Path to your MySQL Dockerfile
+    containerRegistry: 'docker_connection'  # Specify your Docker Hub service connection
+    repository: 'yourdockerhubusername/mysql'  # Path to your MySQL Dockerfile
     command: 'build'
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'your-container-registry-service-connection'
-    repository: 'your-acr-name.azurecr.io/test1'
+    containerRegistry: 'docker_connection'
+    repository: 'maoravidan/projectapp/react'
     command: 'build'
-    Dockerfile: '$(Build.SourcesDirectory)/test1/Dockerfile'  # Path to your frontend Dockerfile
+    Dockerfile: '$(Build.SourcesDirectory)/test1/Dockerfile'
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'your-container-registry-service-connection'
-    repository: 'your-acr-name.azurecr.io/fast_api'
+    containerRegistry: 'docker_connection'
+    repository: 'maoravidan/projectapp/fast_api'
     command: 'build'
-    Dockerfile: '$(Build.SourcesDirectory)/fast_api/Dockerfile'  # Path to your FastAPI Dockerfile
+    Dockerfile: '$(Build.SourcesDirectory)/fast_api/Dockerfile'
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'your-container-registry-service-connection'
-    repository: 'your-acr-name.azurecr.io/mysql'
+    containerRegistry: 'docker_connection'
+    repository: 'maoravidan/projectapp/mysql'
     command: 'push'
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'your-container-registry-service-connection'
-    repository: 'your-acr-name.azurecr.io/test1'
+    containerRegistry: 'docker_connection'
+    repository: 'maoravidan/projectapp/react'
     command: 'push'
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'your-container-registry-service-connection'
-    repository: 'your-acr-name.azurecr.io/fast_api'
+    containerRegistry: 'docker_connection'
+    repository: 'maoravidan/projectapp/fast_api'
     command: 'push'
-
-- task: AzureWebAppContainer@1
-  inputs:
-    azureSubscription: 'your-azure-service-connection'
-    appName: 'your-web-app-name'
-    containers: 'your-acr-name.azurecr.io/mysql'
-    multiContainerConfigFile: 'azure-vote/azuredeploy.json'  # Path to your multi-container configuration file
