@@ -61,4 +61,4 @@ jobs:
       containerregistrytype: 'Container Registry'
       dockerRegistryEndpoint: 'docker_connection'
       action: 'Run services'
-      dockerComposeFile: '**/docker-compose.yml'
+      dockerComposeFile: '**/docker-compose.yml' # Adjust the path to your docker-compose.yml file
