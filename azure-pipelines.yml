@@ -51,3 +51,14 @@ jobs:
       containerRegistry: 'docker_connection'
       repository: 'maoravidan/projectapp/fast_api'
       command: 'push'
+
+- job: DeployDockerCompose
+  displayName: 'Deploy Docker Compose services'
+  dependsOn: BuildAndPushDockerImages
+  steps:
+  - task: DockerCompose@0
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryEndpoint: 'docker_connection'
+      action: 'Run services'
+      dockerComposeFile: '**/docker-compose.yml'
