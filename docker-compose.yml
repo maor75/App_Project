@@ -35,7 +35,7 @@ services:
     depends_on:
       - backend
 
-  backend:
+  fastapi:
     build: ./fast_api
     image: maoravidan/projectapp:backend
     networks:
