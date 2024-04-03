@@ -30,7 +30,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         username: maoravidan
-        password: 
+        password: dckr_pat_bYaA8eT6vd6MNG0ZFytsVBaFTa0
 
         
     - name: Push Docker image to Docker Hub
