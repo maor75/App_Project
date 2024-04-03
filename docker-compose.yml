@@ -33,11 +33,11 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - backend
+      - fastapi
 
   fastapi:
     build: ./fast_api
-    image: maoravidan/projectapp:backend
+    image: maoravidan/projectapp:fastapi
     networks:
       my_network:
         ipv4_address: 172.16.0.4
