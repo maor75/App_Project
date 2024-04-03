@@ -9,10 +9,11 @@ networks:
         - subnet: 172.16.0.0/24
 
 services:
-  database:
+  mysql:
     build:
       context: ./mysql
       dockerfile: Dockerfile
+    image: maoravidan/projectapp:mysql
     environment:
       MYSQL_ROOT_PASSWORD: edmon
       MYSQL_DATABASE: mydb
@@ -23,8 +24,9 @@ services:
     ports:
       - "3306:3306"
 
-  frontend:
+  react:
     build: ./test1
+    image: maoravidan/projectapp:react
     networks:
       my_network:
         ipv4_address: 172.16.0.3
@@ -35,10 +37,11 @@ services:
 
   backend:
     build: ./fast_api
+    image: maoravidan/projectapp:backend
     networks:
       my_network:
         ipv4_address: 172.16.0.4
     ports:
       - "8000:8000"
     depends_on:
-      - database
+      - mysql
