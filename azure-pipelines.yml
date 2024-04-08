@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+
+- script: |
+    cd App_Project/
+    docker compose build
+  displayName: 'Build compose'
+
+- script: |
+    docker compose up -d
+  displayName: 'Run Docker Compose'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker_connection' # Specify your Docker Hub service connection here
+    repository: 'maoravidan/projectapp' # Replace 'maoravidan/my-image' with your Docker Hub repository name
+    command: 'push'
+    tags: 'latest'
+  displayName: 'Push Docker image to Docker Hub'
